@@ -30,6 +30,26 @@ function get_settings_controller(): Settings {
 }
 
 /**
+ * Get a handle to the map renderer.
+ *
+ * @return Renderer
+ */
+function get_renderer(): Renderer {
+	global $egm_plugin;
+	return $egm_plugin->get_renderer();
+}
+
+/**
+ * Get a handle to the front-end controller.
+ *
+ * @return Frontend
+ */
+function get_frontend(): Frontend {
+	global $egm_plugin;
+	return $egm_plugin->get_frontend();
+}
+
+/**
  * Get the current timestamp in human-readable format.
  *
  * @param string $format DateTime format string.

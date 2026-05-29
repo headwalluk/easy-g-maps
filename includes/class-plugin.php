@@ -32,12 +32,27 @@ class Plugin {
 	private ?Admin_Hooks $admin_hooks = null;
 
 	/**
+	 * Map renderer.
+	 *
+	 * @var Renderer|null
+	 */
+	private ?Renderer $renderer = null;
+
+	/**
+	 * Front-end controller.
+	 *
+	 * @var Frontend|null
+	 */
+	private ?Frontend $frontend = null;
+
+	/**
 	 * Register WordPress hooks.
 	 *
 	 * @return void
 	 */
 	public function run(): void {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
+		add_action( 'wp_enqueue_scripts', array( $this->get_frontend(), 'register_assets' ) );
 
 		if ( is_admin() ) {
 			// Settings must exist before admin_init so it can handle form saves.
@@ -99,5 +114,31 @@ class Plugin {
 		}
 
 		return $this->admin_hooks;
+	}
+
+	/**
+	 * Get the map renderer (lazy-loaded).
+	 *
+	 * @return Renderer
+	 */
+	public function get_renderer(): Renderer {
+		if ( is_null( $this->renderer ) ) {
+			$this->renderer = new Renderer();
+		}
+
+		return $this->renderer;
+	}
+
+	/**
+	 * Get the front-end controller (lazy-loaded).
+	 *
+	 * @return Frontend
+	 */
+	public function get_frontend(): Frontend {
+		if ( is_null( $this->frontend ) ) {
+			$this->frontend = new Frontend();
+		}
+
+		return $this->frontend;
 	}
 }

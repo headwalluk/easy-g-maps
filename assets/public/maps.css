@@ -1,0 +1,23 @@
+/**
+ * Easy G Maps - front-end map styles.
+ */
+
+.egm-map {
+	width: 100%;
+	min-height: 200px;
+	background: #e9eef2;
+}
+
+/* Stop theme rules (e.g. max-width:100% on images) from breaking map tiles. */
+.egm-map img {
+	max-width: none;
+}
+
+.egm-info strong {
+	display: block;
+	margin-bottom: 2px;
+}
+
+.egm-info span {
+	display: block;
+}

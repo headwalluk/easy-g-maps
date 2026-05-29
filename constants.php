@@ -58,10 +58,16 @@ const HANDLE_PUBLIC = 'easy-g-maps';
 const HANDLE_GOOGLE = 'easy-g-maps-google';
 
 // ============================================================================
-// Filter Hook Names
-//
-// Public extension points. Documented in dev-notes/00-project-tracker.md.
+// Filter Hooks (public extension points)
 // ============================================================================
 
-const HOOK_MARKERS  = 'easy_g_maps_markers';
-const HOOK_MAP_ARGS = 'easy_g_maps_map_args';
+/*
+ * Invoked as literal strings (WordPress hook names should be literals so they
+ * are greppable and the standards sniff can verify the prefix):
+ *
+ *   easy_g_maps_markers  ( array $markers, string $map_name, array $atts )
+ *       Add or modify markers for a named map (multi-marker support).
+ *
+ *   easy_g_maps_map_args ( array $config, array $atts )
+ *       Modify the full resolved map config before it is output.
+ */

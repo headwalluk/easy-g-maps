@@ -122,11 +122,13 @@ Design goals:
 
 ---
 
-### Milestone 4: Shared Map Renderer & Front-End 📋
+### Milestone 4: Shared Map Renderer & Front-End ✅
 
-**Status:** Not Started
+**Status:** Complete (pending user review)
 **Priority:** High
 **Target:** v0.4.0
+
+**Note:** `marker_color` is collected into the marker config but not yet rendered (classic `google.maps.Marker` needs an SVG/icon path for colour). It is available to the `easy_g_maps_markers` filter and to a future styling pass. Filter hooks are invoked as literal strings (`easy_g_maps_markers`, `easy_g_maps_map_args`), not constants, per the WPCS hook-name sniff.
 
 **Goal:** The core engine both the shortcode and block sit on: turn attributes into a resolved map config, emit the container, and render the live map on the front end.
 
