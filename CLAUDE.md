@@ -23,6 +23,8 @@ phpcs includes/        # Check a specific directory
 
 Always run `phpcs` before committing. Config is in `phpcs.xml` — WordPress standards (short array syntax allowed) with prefixes: `easy_g_maps`, `egm`, `Easy_G_Maps`.
 
+**No Composer.** `phpcs` and `phpcbf` are installed globally on the host (under `~/.config/composer/vendor/bin/`) — invoke them directly. Do **not** add a `composer.json`, a `vendor/` directory, or any composer-based tooling to this project. CI installs the WordPress Coding Standards by git-cloning them and setting `phpcs --config-set installed_paths`, not via `composer install`.
+
 ## Architecture
 
 ### Entry Point & Bootstrap

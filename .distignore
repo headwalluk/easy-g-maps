@@ -5,6 +5,9 @@ sample-data/
 .github/
 .git/
 .gitignore
+.claude/
+vendor/
+node_modules/
 phpcs.xml
 CLAUDE.md
 README.md

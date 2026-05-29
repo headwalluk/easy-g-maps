@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release zip
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # No Composer / build step: the plugin ships plain PHP/CSS/JS. Build a
+      # clean zip honouring .distignore (dev-notes, .github, phpcs.xml, etc.).
+      - name: Build distribution zip
+        run: |
+          PLUGIN_SLUG=easy-g-maps
+          mkdir -p "build/${PLUGIN_SLUG}"
+          rsync -a --exclude='.git' --exclude='build' --exclude-from='.distignore' ./ "build/${PLUGIN_SLUG}/"
+          ( cd build && zip -r "../${PLUGIN_SLUG}.zip" "${PLUGIN_SLUG}" )
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: easy-g-maps.zip
+          generate_release_notes: true

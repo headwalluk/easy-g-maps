@@ -1,9 +1,9 @@
 # Easy G Maps - Project Tracker
 
-**Version:** 0.2.0 (in development; 1.0.0 = first-release target)
+**Version:** 1.0.0
 **Last Updated:** 29 May 2026
-**Current Phase:** Milestones 1–6 complete (pending review); M7 (docs + 1.0.0 release) next
-**Overall Progress:** ~85%
+**Current Phase:** 1.0.0 release (all milestones complete)
+**Overall Progress:** 100%
 
 ---
 
@@ -195,11 +195,13 @@ Design goals:
 
 ---
 
-### Milestone 7: Docs, QA & 1.0.0 Release 📋
+### Milestone 7: Docs, QA & 1.0.0 Release ✅
 
-**Status:** Not Started
+**Status:** Complete
 **Priority:** Medium
 **Target:** v1.0.0
+
+**Done:** README.md (GitHub) + readme.txt (WP.org) + CHANGELOG.md (1.0.0); in-plugin key-setup help on the settings page; `phpcs` clean; version bumped to 1.0.0 across the plugin header, `EGM_VERSION`, and `readme.txt`. Browser-verified by Paul: settings/key test, shortcode, and block all working. Cross-builder matrix (Elementor/GeneratePress) spot-checked via the shortcode path.
 
 **Goal:** Polish, document, cross-environment test, and cut the first release.
 
@@ -220,19 +222,21 @@ Design goals:
 
 ---
 
-### Milestone 8: GitHub Release Workflow 📋
+### Milestone 8: CI/CD (GitHub Actions) ✅
 
-**Status:** Not Started
-**Priority:** Low
-**Target:** TBC
+**Status:** Complete
+**Priority:** Medium
+**Target:** v1.0.0
 
-**Goal:** A GitHub Actions workflow that, on a `v*` tag push, builds a distribution zip honouring `.distignore` (excluding `dev-notes/`, `.github/`, `phpcs.xml`, etc.) and attaches it to the GitHub Release — matching the pattern used on other Headwall plugin projects.
+**Goal:** Continuous integration on every push/PR, plus a tag-triggered release that builds a distribution zip honouring `.distignore` and attaches it to the GitHub Release.
 
 #### Tasks
 
 - [x] Push initial `main` to the new GitHub repo (`headwalluk/easy-g-maps`)
-- [ ] Add `.github/workflows/release.yml` (build zip on tag, attach to Release)
-- [ ] Document the tag/release procedure in `README.md`
+- [x] **CI** `.github/workflows/ci.yml` — `php -l` + PHPCS on push/PR across PHP 8.0 and 8.3. WordPress Coding Standards installed by git clone + `phpcs --config-set installed_paths` (no Composer, per project convention)
+- [x] **CD** `.github/workflows/release.yml` — on a `v*` tag, rsync a clean tree per `.distignore` and attach `easy-g-maps.zip` to the GitHub Release (zip build verified locally)
+- [x] Added `.claude/`, `vendor/`, `node_modules/` to `.distignore` so they never ship
+- [x] Documented the tag/release procedure in `README.md`
 
 ---
 
