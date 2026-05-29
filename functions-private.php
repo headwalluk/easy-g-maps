@@ -20,6 +20,16 @@ function get_plugin(): Plugin {
 }
 
 /**
+ * Get a handle to the plugin's settings controller.
+ *
+ * @return Settings
+ */
+function get_settings_controller(): Settings {
+	global $egm_plugin;
+	return $egm_plugin->get_settings_controller();
+}
+
+/**
  * Get the current timestamp in human-readable format.
  *
  * @param string $format DateTime format string.

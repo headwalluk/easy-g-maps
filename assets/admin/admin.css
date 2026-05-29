@@ -1,0 +1,39 @@
+/**
+ * Easy G Maps - admin settings page styles.
+ */
+
+.egm-settings .egm-api-key {
+	font-family: Menlo, Consolas, monaco, monospace;
+	max-width: 32rem;
+	width: 100%;
+}
+
+.egm-settings .egm-spinner {
+	float: none;
+	margin: 0 0 0 8px;
+	vertical-align: middle;
+}
+
+.egm-settings .egm-test-result {
+	margin-top: 12px;
+	max-width: 40rem;
+}
+
+.egm-settings .egm-test-result .notice {
+	margin: 8px 0 0;
+	padding: 8px 12px;
+}
+
+.egm-settings .egm-test-result .egm-test-line {
+	margin: 2px 0;
+}
+
+.egm-settings .egm-help {
+	max-width: 40rem;
+	margin-left: 1.2rem;
+	list-style: decimal;
+}
+
+.egm-settings .egm-help li {
+	margin-bottom: 6px;
+}

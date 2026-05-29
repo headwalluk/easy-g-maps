@@ -1,9 +1,9 @@
 # Easy G Maps - Project Tracker
 
-**Version:** 0.1.0 (in development; 1.0.0 = first-release target)
+**Version:** 0.2.0 (in development; 1.0.0 = first-release target)
 **Last Updated:** 29 May 2026
-**Current Phase:** Milestone 1 (Plugin Scaffold & Bootstrap)
-**Overall Progress:** ~5%
+**Current Phase:** Milestone 2 complete (Settings Page & API Key) — pending review
+**Overall Progress:** ~25%
 
 ---
 
@@ -76,9 +76,9 @@ Design goals:
 
 ---
 
-### Milestone 2: Settings Page & API Key Management 📋
+### Milestone 2: Settings Page & API Key Management ✅
 
-**Status:** Not Started
+**Status:** Complete (pending user review)
 **Priority:** High
 **Target:** v0.2.0
 
@@ -86,15 +86,16 @@ Design goals:
 
 #### Implementation Checklist
 
-- [ ] Constants: `OPT_API_KEY` (`egm_api_key`), `SETTINGS_PAGE_SLUG`, `ACT_TEST_KEY`
-- [ ] `includes/class-settings.php` — type-safe `get_string()`/`set_string()` (mirrors Bullfix pattern, trimmed to what we need); nonce action/name set in constructor; `maybe_save_settings()` → `save_settings()`; `render_settings_page()` includes the template with `$settings = $this`
-- [ ] Capability gate: `manage_options` on render and save
-- [ ] `includes/class-admin-hooks.php` — `enqueue_scripts( $current_page )` guards on our settings page slug; enqueues admin CSS/JS; `wp_localize_script` with `restriction` help text + i18n strings + sample address/place_id for the test
-- [ ] Admin menu: `add_options_page()` (single page) registered in `Plugin::run()`
-- [ ] `admin-templates/settings-page.php` — code-first `printf`/`echo`: API key text field, Save Changes button, a "Test key" button + `#egm-test-result` notice box, and a help panel explaining required APIs (Maps JS + Places + Geocoding) and referer restriction setup
-- [ ] `includes/form-helpers.php` — `egm_get_text_input_html()`, button-with-spinner helper (ported/trimmed from Bullfix)
-- [ ] `assets/admin/admin.css` — minimal settings page styling
-- [ ] Verify: key saves and round-trips; XSS-safe (escaped on output, sanitized on save); `phpcs` clean
+- [x] Constants: `OPT_API_KEY` (`egm_api_key`), `SETTINGS_PAGE_SLUG` — **no `ACT_TEST_KEY`**: the key test is client-side, so there is no AJAX action to name
+- [x] `includes/class-settings.php` — type-safe `get_string()`/`set_string()` (+ `get_api_key()`); nonce action/name set in constructor; `maybe_save_settings()` → `save_settings()`; `render_settings_page()` includes the template with `$settings = $this`
+- [x] Capability gate: `manage_options` on render and save
+- [x] `includes/class-admin-hooks.php` — `enqueue_scripts( $current_page )` guards on `settings_page_easy-g-maps`; enqueues admin CSS. **Script + `wp_localize_script` deferred to M3** (they belong with the client-side test)
+- [x] Admin menu: `add_options_page()` (single page) registered via `Plugin::register_admin_menu()`
+- [x] `admin-templates/settings-page.php` — code-first `printf`/`echo`: API key text field, Save Changes button, a "Test key" button + `#egm-test-result` box, and a help panel explaining required APIs (Maps JS + Places + Geocoding) and referer restriction setup
+- [x] ~~`includes/form-helpers.php`~~ — **not created**: Bullfix's tab templates use direct `printf`/`echo` rather than the form helpers, so the settings page follows that (cleaner, and avoids the escape-on-echo pitfall). Revisit if a future page needs reusable field markup
+- [x] `assets/admin/admin.css` — minimal settings page styling
+- [x] `phpcs` clean (7/7 files, zero violations); `php -l` clean
+- [ ] Verify in browser: key saves and round-trips; settings-saved notice shows — *pending user review*
 
 ---
 
