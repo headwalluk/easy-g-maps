@@ -2,8 +2,8 @@
 
 **Version:** 0.2.0 (in development; 1.0.0 = first-release target)
 **Last Updated:** 29 May 2026
-**Current Phase:** Milestone 2 complete (Settings Page & API Key) — pending review
-**Overall Progress:** ~25%
+**Current Phase:** Milestones 3–6 in progress (run-through)
+**Overall Progress:** ~40%
 
 ---
 
@@ -99,9 +99,9 @@ Design goals:
 
 ---
 
-### Milestone 3: Client-Side API Key Test 📋
+### Milestone 3: Client-Side API Key Test ✅
 
-**Status:** Not Started
+**Status:** Complete (pending user review)
 **Priority:** High
 **Target:** v0.3.0
 

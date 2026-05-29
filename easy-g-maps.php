@@ -3,7 +3,7 @@
  * Plugin Name:       Easy G Maps
  * Plugin URI:        https://headwall-hosting.com/
  * Description:       Easily add Google Maps to your content with a shortcode or a Gutenberg block. One settings page, one API key.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 6.3
  * Requires PHP:      8.0
  * Author:            Paul Faulkner
@@ -19,7 +19,7 @@
 defined( 'ABSPATH' ) || die();
 
 const EGM_NAME    = 'easy-g-maps';
-const EGM_VERSION = '0.2.0';
+const EGM_VERSION = '0.3.0';
 
 define( 'EGM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'EGM_URL', plugin_dir_url( __FILE__ ) );
