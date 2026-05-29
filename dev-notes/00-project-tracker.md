@@ -1,9 +1,9 @@
 # Easy G Maps - Project Tracker
 
-**Version:** 1.0.0 (in development)
+**Version:** 0.1.0 (in development; 1.0.0 = first-release target)
 **Last Updated:** 29 May 2026
 **Current Phase:** Milestone 1 (Plugin Scaffold & Bootstrap)
-**Overall Progress:** 0%
+**Overall Progress:** ~5%
 
 ---
 
