@@ -53,6 +53,13 @@ class Plugin {
 	private ?Shortcode $shortcode = null;
 
 	/**
+	 * Block handler.
+	 *
+	 * @var Block|null
+	 */
+	private ?Block $block = null;
+
+	/**
 	 * Register WordPress hooks.
 	 *
 	 * @return void
@@ -60,6 +67,8 @@ class Plugin {
 	public function run(): void {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this->get_shortcode(), 'register' ) );
+		// The block is registered in all contexts (incl. REST) for ServerSideRender.
+		add_action( 'init', array( $this->get_block(), 'register' ) );
 		add_action( 'wp_enqueue_scripts', array( $this->get_frontend(), 'register_assets' ) );
 
 		if ( is_admin() ) {
@@ -69,6 +78,7 @@ class Plugin {
 			add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
 			add_action( 'admin_init', array( $settings, 'maybe_save_settings' ) );
 			add_action( 'admin_enqueue_scripts', array( $this->get_admin_hooks(), 'enqueue_scripts' ) );
+			add_action( 'enqueue_block_editor_assets', array( $this->get_admin_hooks(), 'enqueue_block_editor_assets' ) );
 		}
 	}
 
@@ -161,5 +171,18 @@ class Plugin {
 		}
 
 		return $this->shortcode;
+	}
+
+	/**
+	 * Get the block handler (lazy-loaded).
+	 *
+	 * @return Block
+	 */
+	public function get_block(): Block {
+		if ( is_null( $this->block ) ) {
+			$this->block = new Block();
+		}
+
+		return $this->block;
 	}
 }

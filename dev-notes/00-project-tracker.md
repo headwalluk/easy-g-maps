@@ -2,8 +2,8 @@
 
 **Version:** 0.2.0 (in development; 1.0.0 = first-release target)
 **Last Updated:** 29 May 2026
-**Current Phase:** Milestones 3–6 in progress (run-through)
-**Overall Progress:** ~40%
+**Current Phase:** Milestones 1–6 complete (pending review); M7 (docs + 1.0.0 release) next
+**Overall Progress:** ~85%
 
 ---
 
@@ -176,9 +176,9 @@ Design goals:
 
 ---
 
-### Milestone 6: Gutenberg Block (no-build dynamic block) 📋
+### Milestone 6: Gutenberg Block (no-build dynamic block) ✅
 
-**Status:** Not Started
+**Status:** Complete (pending user review)
 **Priority:** High
 **Target:** v0.6.0
 

@@ -65,4 +65,33 @@ class Admin_Hooks {
 			)
 		);
 	}
+
+	/**
+	 * Enqueue the block editor assets.
+	 *
+	 * Loads the block script plus the front-end map assets, so the block's
+	 * ServerSideRender preview becomes a live map in the editor.
+	 *
+	 * @return void
+	 */
+	public function enqueue_block_editor_assets(): void {
+		wp_enqueue_script(
+			HANDLE_BLOCK,
+			EGM_ASSETS_URL . 'admin/block.js',
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
+			EGM_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			HANDLE_BLOCK,
+			'egmBlock',
+			array(
+				'hasKey' => '' !== get_settings_controller()->get_api_key(),
+			)
+		);
+
+		// Load the map assets so the editor preview renders a live map.
+		get_frontend()->enqueue_map_assets();
+	}
 }
