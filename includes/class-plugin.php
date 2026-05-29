@@ -46,12 +46,20 @@ class Plugin {
 	private ?Frontend $frontend = null;
 
 	/**
+	 * Shortcode handler.
+	 *
+	 * @var Shortcode|null
+	 */
+	private ?Shortcode $shortcode = null;
+
+	/**
 	 * Register WordPress hooks.
 	 *
 	 * @return void
 	 */
 	public function run(): void {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
+		add_action( 'init', array( $this->get_shortcode(), 'register' ) );
 		add_action( 'wp_enqueue_scripts', array( $this->get_frontend(), 'register_assets' ) );
 
 		if ( is_admin() ) {
@@ -140,5 +148,18 @@ class Plugin {
 		}
 
 		return $this->frontend;
+	}
+
+	/**
+	 * Get the shortcode handler (lazy-loaded).
+	 *
+	 * @return Shortcode
+	 */
+	public function get_shortcode(): Shortcode {
+		if ( is_null( $this->shortcode ) ) {
+			$this->shortcode = new Shortcode();
+		}
+
+		return $this->shortcode;
 	}
 }

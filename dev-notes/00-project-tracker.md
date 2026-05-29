@@ -158,9 +158,9 @@ Design goals:
 
 ---
 
-### Milestone 5: Shortcode 📋
+### Milestone 5: Shortcode ✅
 
-**Status:** Not Started
+**Status:** Complete (pending user review)
 **Priority:** High
 **Target:** v0.5.0
 
