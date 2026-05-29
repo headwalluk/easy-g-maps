@@ -43,7 +43,7 @@ Design goals:
 
 ## Active TODO Items
 
-- [ ] **Confirm GitHub remote origin** — repo is being created; add the `git remote add origin <url>` URL here once available and make the initial commit/push.
+- [x] **GitHub remote origin** — `git@github.com:headwalluk/easy-g-maps.git`; repo initialised on `main`, initial docs commit pushed (29 May 2026).
 - [ ] **Decide final plugin display name** — "Easy G Maps" is assumed throughout; confirm before first release.
 
 ---
@@ -227,7 +227,7 @@ Design goals:
 
 #### Tasks
 
-- [ ] Push initial `main`/`master` to the new GitHub repo (URL pending — see Active TODO)
+- [x] Push initial `main` to the new GitHub repo (`headwalluk/easy-g-maps`)
 - [ ] Add `.github/workflows/release.yml` (build zip on tag, attach to Release)
 - [ ] Document the tag/release procedure in `README.md`
 
