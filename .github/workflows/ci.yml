@@ -34,7 +34,8 @@ jobs:
         run: |
           git clone --depth 1 --branch 3.1.0 https://github.com/WordPress/WordPress-Coding-Standards.git "$RUNNER_TEMP/wpcs"
           git clone --depth 1 --branch 1.0.12 https://github.com/PHPCSStandards/PHPCSUtils.git "$RUNNER_TEMP/phpcsutils"
-          phpcs --config-set installed_paths "$RUNNER_TEMP/wpcs,$RUNNER_TEMP/phpcsutils"
+          git clone --depth 1 --branch 1.2.1 https://github.com/PHPCSStandards/PHPCSExtra.git "$RUNNER_TEMP/phpcsextra"
+          phpcs --config-set installed_paths "$RUNNER_TEMP/wpcs,$RUNNER_TEMP/phpcsutils,$RUNNER_TEMP/phpcsextra"
           phpcs -i
 
       - name: Run PHPCS
